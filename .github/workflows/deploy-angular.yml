@@ -6,6 +6,11 @@ jobs:
   configurar:
     runs-on: ubuntu-latest
     steps:
+      - name: Fazer o checkout do código
+      # essa é uma action que permite ter caesso ao código durante a execução do job
+        uses: actions/checkout@v4
+        with:
+          ref: main # ref é um input que diz qual será o nome da branch que utilizaremos
       - name: "Configurar o git na pipeline"
         run: |
           echo "Configurando o git na pipeline"
@@ -13,7 +18,6 @@ jobs:
       - name: "Configurando o user no git"
         run: |
           echo "Configurando o git user.name"
-          shbdasbdbsajsb
   construir:
     runs-on: ubuntu-24.04
     needs:
