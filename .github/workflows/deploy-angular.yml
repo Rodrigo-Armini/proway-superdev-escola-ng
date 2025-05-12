@@ -23,7 +23,7 @@ jobs:
       - name: Instalar Angular CLI
         run: npm install --global @angular/cli
       - name: Build - Gerar o fonte de produção
-        run: ng build --configuration production --base-href=/.../
+        run: ng build --configuration production --base-href=/proway-superdev-escola-ng/
       - name: "Listar arquivos e pastas"
         run: |
           ls -la
