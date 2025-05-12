@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  configurar:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Fazer o checkout do código
@@ -29,8 +29,7 @@ jobs:
           ls -la
   construir:
     runs-on: ubuntu-24.04
-    needs:
-      - configurar
+    needs: [build]
     steps:
       - name: "Instalar as dependencias"
         run: echo 'Instalando as dependencias'
