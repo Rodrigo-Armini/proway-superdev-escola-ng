@@ -1,7 +1,15 @@
+<p-toast />
+<p-confirmdialog />
+
 <div class="card">
+    <div class="flex justify-content-end mb-2">
+        <p-button label="Novo Curso" severity="info" 
+            icon="pi pi-plus" (click)="redirecionarPaginaCadastro()"></p-button>
+    </div>
+
     <p-table [value]="cursos" 
-    showGridlines stripedRows
-    [tableStyle]="{ 'min-width': '50rem' }">
+        showGridlines stripedRows
+        [tableStyle]="{ 'min-width': '50rem' }">
         <ng-template #header>
             <tr>
                 <th>Código</th>
@@ -16,8 +24,8 @@
                 <td>{{ curso.nome }}</td>
                 <td>{{ curso.sigla }}</td>
                 <td>
-                    <p-button label="Editar" severity="warn" ngClass="mr-2"></p-button>
-                    <p-button label="Apagar" severity="danger"></p-button>
+                    <p-button label="Editar" severity="warn" icon="pi pi-pencil" class="mr-2"/>
+                    <p-button label="Apagar" (click)="confirm1($event)" icon="pi pi-trash" severity="danger"/>
                 </td>
             </tr>
         </ng-template>

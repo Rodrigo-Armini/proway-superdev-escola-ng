@@ -1,5 +1,5 @@
 name: "Deploy Angular PROD"
-on: 
+on:
   push:
     branches:
       - main
@@ -10,13 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Fazer o checkout do código
-      # essa é uma action que permite ter caesso ao código durante a execução do job
-        uses: actions/checkout@v4
+        # essa é uma aciton que permite ter acesso ao código durante a execução do job
+        uses: actions/checkout@v4 
         with:
           ref: main # ref é um input que diz qual será o nome da branch que utilizaremos
-      - name: "Listar arquivos e pastas"
-        run: |
-          ls -la
       - name: "Instalar Node.JS"
         uses: actions/setup-node@v4
         with:
@@ -34,11 +31,11 @@ jobs:
           path: dist/
   deploy:
     runs-on: ubuntu-24.04
-    needs: [build]
+    needs: build
     steps:
       - name: Fazer o checkout do código
-      # essa é uma action que permite ter caesso ao código durante a execução do job
-        uses: actions/checkout@v4
+        # essa é uma aciton que permite ter acesso ao código durante a execução do job
+        uses: actions/checkout@v4 
         with:
           ref: main
       - name: Download do artefato
@@ -48,8 +45,8 @@ jobs:
           path: ./dist
       - name: "Configurar Git"
         run: |
-          git config --global user.name "Rodrigo Novaes Armini"
-          git config --global user.email "rodrigoarmini@gmail.com"
+          git config --global user.name "Francisco Lucas Janesch Lange Sens"
+          git config --global user.email "franciscosensaulas@gmail.com"
           npm install --global angular-cli-ghpages
       - name: Deploy to GitHub Pages
         run: npx angular-cli-ghpages --dir=dist/escola-ng/browser --no-silent
