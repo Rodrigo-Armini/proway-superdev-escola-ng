@@ -1,4 +1,3 @@
-import { CursoService } from './../../../services/curso.service';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
@@ -8,6 +7,7 @@ import { InputMaskModule } from 'primeng/inputmask';
 import { ButtonModule } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import { CursoService } from '../../../services/curso.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -28,22 +28,22 @@ export class CursoCadastroComponent {
   curso: CursoCadastro;
 
   constructor(
-    private CursoService: CursoService,
-    private MessageService: MessageService,
+    private cursoSerivce: CursoService,
+    private messageService: MessageService,
     private router: Router,
-  ){
+  ) {
     this.curso = new CursoCadastro();
   }
 
   cadastrar() {
-    this.CursoService.cadastrar(this.curso).subscribe({
+    this.cursoSerivce.cadastrar(this.curso).subscribe({
       next: aluno => this.apresentarMensagemCadastrado(),
       error: erro => console.log("Ocorreu um erro ao cadastrar o aluno:" + erro),
     })
   }
 
   private apresentarMensagemCadastrado() {
-    this.MessageService.add({ severity: 'success', summary: 'Sucesso', detail: "Curso cadastrado com sucesso"});
+    this.messageService.add({ severity: 'success', summary: 'Sucesso', detail: 'Curso cadastrado com sucesso' });
     this.router.navigate(["/cursos"]);
   }
 }

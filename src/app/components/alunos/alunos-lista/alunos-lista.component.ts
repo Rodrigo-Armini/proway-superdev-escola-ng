@@ -65,7 +65,6 @@ export class AlunosListaComponent implements OnInit{
 
     this.dataMinima = new Date(1900, 0, 1);
     this.dataMaxima = new Date(dataHoraAgora.getFullYear(), dataHoraAgora.getMonth(), dataHoraAgora.getDate(), 23, 59, 59)
-    
   }
 
   ngOnInit(): void {
@@ -149,7 +148,7 @@ export class AlunosListaComponent implements OnInit{
   }
 
   salvar(){
-  
+    debugger
     if(this.idAlunoEditar === undefined)
       this.cadastrar();
     else

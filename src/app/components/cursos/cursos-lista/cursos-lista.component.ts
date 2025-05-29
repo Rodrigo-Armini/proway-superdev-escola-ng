@@ -1,4 +1,3 @@
-import { CursoService } from './../../../services/curso.service';
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { TableModule } from 'primeng/table';
@@ -8,6 +7,7 @@ import { Router } from '@angular/router';
 import { ToastModule } from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { CursoService } from '../../../services/curso.service';
 
 @Component({
   selector: 'app-cursos-lista',
@@ -45,6 +45,10 @@ export class CursosListaComponent implements OnInit {
     this.router.navigate(["/cursos/cadastro"])
   }
 
+  redirecionarEditar(idCurso: number){
+    this.router.navigate(["cursos/editar/" + idCurso])
+  }
+
   confirmarParaApagar(event: Event, id: number) {
     this.confirmationService.confirm({
       target: event.target as EventTarget,
@@ -67,20 +71,19 @@ export class CursosListaComponent implements OnInit {
   }
 
   private apagar(id: number){
-    this.cursoService.apagar(id).subscribe({
+    this.cursoService.apagar(id).subscribe({ 
       next: () => this.apresentarMensagemApagado(),
       error: erro => console.log(`Ocorreu um erro ao apagar o curso: ${erro}`),
     })
   }
 
   private apresentarMensagemApagado(){
-    this.messageService.add({
-      severity: 'success',
-      summary: 'Sucesso',
+    this.messageService.add({ 
+      severity: 'success', 
+      summary: 'Sucesso', 
       detail: 'Curso removido com sucesso',
-    });
+     });
     this.carregarCursos();
   }
-
 
 }
