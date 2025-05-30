@@ -148,7 +148,6 @@ export class AlunosListaComponent implements OnInit{
   }
 
   salvar(){
-    debugger
     if(this.idAlunoEditar === undefined)
       this.cadastrar();
     else
